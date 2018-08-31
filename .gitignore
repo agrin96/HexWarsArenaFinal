@@ -1,0 +1,10 @@
+Assets.xcassets
+Base.lproj
+Sounds
+TutorialScreen
+Info.plist
+*.xib
+*.sks
+*.p12
+.DS_Store
+
