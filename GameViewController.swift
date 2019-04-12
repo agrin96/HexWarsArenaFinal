@@ -32,7 +32,17 @@ var stateFilePath: String {
 class GameViewController: UIViewController {
     var gameScene: GameScene?
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if #available(iOS 11.0, *), let view = self.view {
+            print(self.view.safeAreaLayoutGuide.layoutFrame)
+            view.frame = CGRect(x: 0, y: 44, width: 375, height: 734)
+        }
+    }
+
+    
     override func loadView() {
+        super.loadView()
         self.view = SKView()
         self.view.bounds.size = CGSize(width: 375, height: 667)
         self.navigationController!.isNavigationBarHidden = true
@@ -40,6 +50,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let view = self.view as! SKView? {
 
             if self.gameScene != nil {
@@ -48,20 +59,17 @@ class GameViewController: UIViewController {
             }else{
                 let scene = GameScene(size: CGSize(width: 375, height: 667))
                 scene.scaleMode = .fill
-                scene.size = CGSize(width: 375, height: 667)
                 scene.parentViewController = self
                 // Present the scene
                 view.presentScene(scene)
                 view.ignoresSiblingOrder = true
 
-//                view.showsFPS = true
-//                view.showsNodeCount = true
-//                view.showsDrawCount = true
                 self.gameScene = scene
             }
 
         }
     }
+    
     func saveCurrentGame(){
         if self.gameScene != nil {
             NSKeyedArchiver.archiveRootObject(self.gameScene!, toFile: sceneFilePath)

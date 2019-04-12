@@ -10,7 +10,15 @@ import UIKit
 import SpriteKit
 
 class HistoryScreen: UIViewController {
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if #available(iOS 11.0, *), let view = self.view {
+            print(self.view.safeAreaLayoutGuide.layoutFrame)
+            view.frame = CGRect(x: 0, y: 44, width: 375, height: 734)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
         

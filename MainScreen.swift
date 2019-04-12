@@ -10,21 +10,30 @@ import SpriteKit
 import UIKit
 
 class MainScreen: UIViewController{
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if #available(iOS 11.0, *), let view = self.view {
+            print(self.view.safeAreaLayoutGuide.layoutFrame)
+            view.frame = CGRect(x: 0, y: 44, width: 375, height: 734)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         self.view.bounds.size = CGSize(width: 375, height: 667)
     }
     
     override func loadView() {
+        super.loadView()
         self.view = SKView()
         self.view.bounds.size = CGSize(width: 375, height: 667)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let view = self.view as! SKView? {
-            
             let scene = MainMenuScene()
             scene.scaleMode = .fill
             scene.size = CGSize(width: 375, height: 667)
@@ -54,7 +63,6 @@ class MainScreen: UIViewController{
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     func transitionToSinglePlayer(){

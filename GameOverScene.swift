@@ -32,6 +32,10 @@ class GameOverScene: SKScene{
                 self.addChild(self.tapSoundMaker!)
             }
         }
+
+        //If we win we should be done and restart.
+        GameState.sharedInstance().wasGameSaved = false
+        GameState.saveGameState()
     }
 
     private func setupBackGround(for view: SKView){

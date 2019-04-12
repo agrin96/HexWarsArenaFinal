@@ -16,7 +16,7 @@ class NewCustomGameScene: SKScene {
     var tapSoundMaker:SKAudioNode?
     let fadeDuration = 0.25
     var isGameValid:Bool = false
-
+    
     override func didMove(to view: SKView) {
         setupBackGround(for: view)
         setupMenuStyle(for: view){
