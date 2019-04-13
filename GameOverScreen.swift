@@ -8,8 +8,6 @@ import SpriteKit
 import UIKit
 
 
-
-
 class GameOverScreen: UIViewController {
     var winningPlayer:Player?
     var winningTurns:Int?
@@ -32,9 +30,6 @@ class GameOverScreen: UIViewController {
             // Present the scene
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
-
-//            view.showsFPS = true
-//            view.showsNodeCount = true
         }
     }
 

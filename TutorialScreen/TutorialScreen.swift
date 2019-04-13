@@ -26,14 +26,12 @@ class TutorialScreen:UIViewController {
             let scene = TutorialScene()
             scene.parentViewController = self
             scene.scaleMode = .fill
-            scene.size = CGSize(width: 375, height: 667)
+            scene.size = CGSize(width: 375, height: 750)
+            scene.position = view.frame.origin
 
             // Present the scene
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
-
-//            view.showsFPS = true
-//            view.showsNodeCount = true
         }
     }
 

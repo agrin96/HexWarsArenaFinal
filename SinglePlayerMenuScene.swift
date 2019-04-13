@@ -335,8 +335,11 @@ class SinglePlayerMenuScene: SKScene {
         view.addSubview(panView)
         
         presetMapScrollRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePresetScroll))
-        self.scene?.view?.subviews[0].addGestureRecognizer(presetMapScrollRecognizer!)
-        
+        for v in self.scene!.view!.subviews {
+            if v.tag == 1{
+                v.addGestureRecognizer(presetMapScrollRecognizer!)
+            }
+        }
         completion()
     }
     
@@ -537,6 +540,7 @@ class SinglePlayerMenuScene: SKScene {
     }
     
     @objc func handlePresetScroll(_ sender: UIPanGestureRecognizer){
+        print("Here")
         switch sender.state {
             case .began:
                 break

@@ -6,6 +6,7 @@
 import Foundation
 import SpriteKit
 import UIKit
+import DeviceKit
 
 class CameraWithUI: SKCameraNode, UIGestureRecognizerDelegate {
     weak var boardTileManager:BoardTileManager?
@@ -515,7 +516,11 @@ class CameraWithUI: SKCameraNode, UIGestureRecognizerDelegate {
         turnNavigationBar.isHidden = false
         turnNavigationBar.isUserInteractionEnabled = false
         turnNavigationBar.anchorPoint = CGPoint(x: 0.5, y: 0)
-        turnNavigationBar.position = CGPoint(x: 0, y: -view.frame.height / 2 + 5)
+        if Device.allDevicesWithSensorHousing.contains(Device.current){
+            turnNavigationBar.position = CGPoint(x: 0, y: -view.frame.height / 2 + 35)
+        }else{
+            turnNavigationBar.position = CGPoint(x: 0, y: -view.frame.height / 2 + 60)
+        }
         turnNavigationBar.zPosition = 10
         self.addChild(turnNavigationBar)
 
